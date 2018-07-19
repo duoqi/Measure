@@ -254,7 +254,6 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
                             }
                         }
 
-
                         break;
                     case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
                         break;

@@ -108,7 +108,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         tv_bottom6 = (TextView) view.findViewById(R.id.tv_bottom6);
 
 
-        getDataFromServer();
+        if(null != user){
+            getDataFromServer();
+        }
 
     }
 
