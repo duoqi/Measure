@@ -116,6 +116,7 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
     private String num = null; //工期号
 
     public static WorkFragment instance;
+    private LinearLayout ll_layout;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -141,6 +142,7 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
 
     private void initViews(View view) {
         navigationBar = (NavigationBar) view.findViewById(R.id.navigationBar);
+        ll_layout = (LinearLayout) view.findViewById(R.id.ll_layout);
         navigationBar.setTitle("工作");
         navigationBar.hideLeftViews();
         navigationBar.clearRightViews();
@@ -357,6 +359,10 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
         tv_name.setText("计量支付");
         getDataFromServer(1, null, null, null);
         type = 0;
+
+        if(ll_layout.getVisibility() == View.GONE){
+            ll_layout.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -367,6 +373,10 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
         tv_name.setText("变更申请");
         getDataFromServerForType(1, null, null, null, 1);
         type = 1;
+
+        if(ll_layout.getVisibility() == View.VISIBLE){
+            ll_layout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -377,6 +387,10 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
         tv_name.setText("变更令");
         getDataFromServerForType(1, null, null, null, 3);
         type = 3;
+
+        if(ll_layout.getVisibility() == View.VISIBLE){
+            ll_layout.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -387,6 +401,10 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
         tv_name.setText("单价申报");
         getDataFromServerForType(1, null, null, null, 2);
         type = 2;
+
+        if(ll_layout.getVisibility() == View.VISIBLE){
+            ll_layout.setVisibility(View.GONE);
+        }
     }
 
 
@@ -394,15 +412,28 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.rl_state:
-                requirmentSelectState();
+                if(type == 0){
+                    requirmentSelectState();
+                }else{
+                    mActivity.showToastMessage("没有筛选");
+                }
                 break;
             case R.id.rl_time:
                 //选择标段
-                requirmentSelectSection();
+                if(type == 0){
+                    requirmentSelectSection();
+                }else{
+                    mActivity.showToastMessage("没有筛选");
+                }
+
                 break;
             case R.id.rl_section:
                 //选择工期
-                requirmentProjectTime();
+                if(type == 0){
+                    requirmentProjectTime();
+                }else{
+                    mActivity.showToastMessage("没有筛选");
+                }
                 break;
             default:
                 break;
