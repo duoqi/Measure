@@ -5,7 +5,7 @@ import android.util.Log;
 public class Print
 {
 
-    public static final boolean IS_DEBUG = true;
+    public static final boolean IS_DEBUG = false;
 
     //	static
 //	{

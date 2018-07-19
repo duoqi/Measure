@@ -17,6 +17,8 @@ import com.julongsoft.measure.R;
 import com.julongsoft.measure.db.GreenDaoHelper;
 import com.julongsoft.measure.utils.PrefUtil;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by tao on 2017/7/24.
  */
@@ -219,12 +221,12 @@ public class BaseActivity extends AppCompatActivity {
                 boolean isLogin = PrefUtil.getBoolean(context, "isLogin", false);
                 if (isLogin) {
 
-//                    PrefUtil.putBoolean(context, "isLogin", false);
-//                    GreenDaoHelper.getInstance().clearAllData();
-//                    finish();
-//                    startActivity(new Intent(context, LoginActivity.class));
-//                    showToastMessage("登录失效，请重新登录");
-//                    PushManager.getInstance().turnOffPush(BaseActivity.this);
+                    PrefUtil.putBoolean(context, "isLogin", false);
+                    GreenDaoHelper.getInstance().clearAllData();
+                    finish();
+                    startActivity(new Intent(context, LoginActivity.class));
+                    showToastMessage("登录失效，请重新登录");
+                    JPushInterface.stopPush(BaseActivity.this);
                 }
 
             }

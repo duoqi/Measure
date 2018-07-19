@@ -35,6 +35,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 
@@ -412,7 +414,7 @@ public class WaitAuditActivity extends BaseActivity implements View.OnClickListe
                                 for (int i = 0; i < list_type2.size(); i++) {
                                     SectionTypeData data = list_type2.get(i);
                                     Print.e(TAG + "333", data.getId());
-                                    HttpManager.getInstance().getHttpService().sign2(user.getToken(),  data.getId(),period.getCode()).enqueue(new HttpResultCallback<BaseResultData<Object>>() {
+                                    HttpManager.getInstance().getHttpService().sign2(user.getToken(),  data.getId(),period.getCode(),"同意",0).enqueue(new HttpResultCallback<BaseResultData<Object>>() {
                                         @Override
                                         public void onSuc(Response<BaseResultData<Object>> response) {
                                             Print.e(TAG,response.body().toString());
@@ -434,6 +436,8 @@ public class WaitAuditActivity extends BaseActivity implements View.OnClickListe
                     } else {
                         showToastMessage("不能签字！");
                     }
+
+
                 }
 
 

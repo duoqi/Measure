@@ -1,15 +1,12 @@
 package com.julongsoft.measure.http;
 
 
-import com.google.gson.JsonObject;
 import com.julongsoft.measure.entity.HomeDataBean;
 import com.julongsoft.measure.entity.PeriodDataForTypeBean;
 import com.julongsoft.measure.entity.PeriodListData;
 import com.julongsoft.measure.entity.SectionDetial;
 import com.julongsoft.measure.entity.SectionTypeData;
 import com.julongsoft.measure.entity.UserData;
-
-import org.json.JSONObject;
 
 import java.util.List;
 
@@ -31,8 +28,6 @@ public interface HttpService {
 //    public static final String baseUrl = "http://192.168.7.104:8083/plat/"; //测试
 //    public static final String baseUrl = "http://60.8.218.142:8089/plat/"; //测试
 //    public static final String baseUrl = "http://192.168.7.102:8090/plat/"; //测试
-
-
 
 
     /***
@@ -137,10 +132,25 @@ public interface HttpService {
      */
     @POST("a/app/jlzf/change/sign/{token}/{id}/{code}")
     Call<BaseResultData<Object>> sign2(@Path("token") String token,
-                           @Path("id") int id,
-                           @Path("code") String code
+                                       @Path("id") int id,
+                                       @Path("code") String code,
+                                       @Query("idea") String idea,
+                                       @Query("repeal") int repeal
 
     );
+
+//    /***
+//     * 流程通过接口
+//     * @return
+//     */
+//    @POST("a/app/jlzf/change/sign/{token}/{id}/{code}")
+//    Call<Object> sign3(@Path("token") String token,
+//                       @Path("id") int id,
+//                       @Path("code") String code,
+//                       @Path("idea") String idea,
+//                       @Path("repeal") int repeal
+//
+//    );
 
     /***
      * 签字通过接口
