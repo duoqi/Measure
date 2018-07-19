@@ -188,8 +188,6 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
                     startActivity(intent);
                 }
 
-
-
             }
         });
 
@@ -306,6 +304,7 @@ public class WorkFragment extends BaseFragment implements PopupWindowWork.OnClic
                     periodListDatas.addAll(response.body().getContent().getList());
                     workDataAdapter.notifyDataSetChanged();
                 }
+
             }
 
             @Override
